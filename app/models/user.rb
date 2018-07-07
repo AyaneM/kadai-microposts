@@ -9,4 +9,5 @@ class User < ApplicationRecord
   has_secure_password
   #暗号化のためbcypt Gemが必要
   #migrationファイルにpassword_digestのカラムも用意
+  has_many :microposts
 end
