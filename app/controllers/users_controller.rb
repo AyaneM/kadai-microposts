@@ -39,9 +39,16 @@ class UsersController < ApplicationController
     counts(@user)
   end
   
+  def likes
+    @user = User.find(params[:id])
+    @likes = @user.like_microposts.page(params[:page])
+    @microposts = @likes.all.order("created_at DESC").page(params[:page])
+  end
+  
   
   private
   
+  #アクションではなくメソッド
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end

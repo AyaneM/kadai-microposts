@@ -1,0 +1,20 @@
+
+<% if current_user.like?(micropost) %>
+
+<!--モデルを扱う場合はlink_toよりform_forメソッドを使うのが無難-->
+
+  <%= form_for(current_user.favorites.find_by(micropost_id: micropost.id), html: { method: :delete }) do |f| %>
+    <%= hidden_field_tag :micropost_id, micropost.id %>
+    <!--第1引数:idシンボル　第２引数value -->
+    <!--どのシンボルにどの値を渡すか-->
+    <%= f.submit 'Unlike', class: 'btn btn-danger btn-xs' %>
+  <% end %>
+
+<% else %>  
+  
+  <%= form_for(current_user.favorites.build) do |f| %>
+    <%= hidden_field_tag :micropost_id, micropost.id %>
+    <%= f.submit 'Like', class: 'btn btn-primary btn-xs' %>
+  <% end %>
+
+<% end %>

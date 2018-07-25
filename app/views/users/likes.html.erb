@@ -45,10 +45,12 @@ Followers <span class="badge">
 </span>
 <% end %>
 </li>
+
+
     </ul>
     
 <%= render 'microposts/microposts', microposts: @microposts %>
 <!--render 'パーシャル', パーシャルで使う変数名: 渡す値-->
-<!--micropostsパーシャルへgo-->
+<!--likesアクションで@microposts定義されていなかったらnilになっちゃう-->  
   </div>
 </div>
